@@ -1,4 +1,4 @@
-name: ci linting
+name: ci/linting
 on:
   push:
     tags:
