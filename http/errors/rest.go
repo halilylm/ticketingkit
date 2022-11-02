@@ -7,9 +7,9 @@ import (
 )
 
 const (
-	internalServerError = "internal server error"
-	notFoundError       = "request resource not found"
-	unauthorized        = "Unauthorized"
+	ErrInternalServerError = "internal server error"
+	ErrNotFoundError       = "request resource not found"
+	ErrUnauthorized        = "Unauthorized"
 )
 
 // httpError is the struct type of http errors
@@ -49,7 +49,7 @@ func NewBadRequestError(message any, internal error) *httpError {
 func NewInternalServerError(internal error) *httpError {
 	return &httpError{
 		Code:     http.StatusInternalServerError,
-		Message:  internalServerError,
+		Message:  ErrInternalServerError,
 		Internal: internal,
 	}
 }
@@ -58,16 +58,16 @@ func NewInternalServerError(internal error) *httpError {
 func NewNotFoundError(internal error) *httpError {
 	return &httpError{
 		Code:     http.StatusNotFound,
-		Message:  notFoundError,
+		Message:  ErrNotFoundError,
 		Internal: internal,
 	}
 }
 
-// NewUnauthorizedError generates a new unauthorized error
+// NewUnauthorizedError generates a new ErrUnauthorized error
 func NewUnauthorizedError(internal error) *httpError {
 	return &httpError{
 		Code:     http.StatusUnauthorized,
-		Message:  unauthorized,
+		Message:  ErrUnauthorized,
 		Internal: internal,
 	}
 }

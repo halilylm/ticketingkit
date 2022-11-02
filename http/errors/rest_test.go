@@ -24,19 +24,19 @@ func TestNewBadRequestError(t *testing.T) {
 func TestNewInternalServerError(t *testing.T) {
 	internalServerErr := NewInternalServerError(errors.New("cant connect to db"))
 	assert.Equal(t, http.StatusInternalServerError, internalServerErr.Code)
-	assert.Equal(t, internalServerError, internalServerErr.Message)
+	assert.Equal(t, ErrInternalServerError, internalServerErr.Message)
 }
 
 func TestNewNotFoundError(t *testing.T) {
 	notFound := NewNotFoundError(nil)
 	assert.Equal(t, http.StatusNotFound, notFound.Code)
-	assert.Equal(t, notFoundError, notFound.Message)
+	assert.Equal(t, ErrNotFoundError, notFound.Message)
 }
 
 func TestNewUnauthorizedError(t *testing.T) {
 	unauthorizedError := NewUnauthorizedError(nil)
 	assert.Equal(t, http.StatusUnauthorized, unauthorizedError.Code)
-	assert.Equal(t, unauthorized, unauthorizedError.Message)
+	assert.Equal(t, ErrUnauthorized, unauthorizedError.Message)
 }
 
 func TestParseErrorForResponse(t *testing.T) {
